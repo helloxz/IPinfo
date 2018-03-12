@@ -1,0 +1,14 @@
+.menu{
+	background-color:#393D49;
+}
+.footer{
+	background-color: #c2c2c2;
+	position:fixed;
+	bottom:0;
+	padding:10px;
+	color:#4F4F4F;
+	width:100%;
+}
+.content{
+	margin-top:20px;
+}
