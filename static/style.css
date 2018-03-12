@@ -2,13 +2,33 @@
 	background-color:#393D49;
 }
 .footer{
-	background-color: #c2c2c2;
+	background-color: #2F4056;
 	position:fixed;
 	bottom:0;
 	padding:10px;
-	color:#4F4F4F;
+	color:#DFDFDF;
 	width:100%;
 }
 .content{
 	margin-top:20px;
+}
+#ipinfo{
+	display: none;
+}
+#allinfo{
+	display: none;
+}
+#myip{
+	text-align:center;
+}
+.logo{
+	float:left;
+	margin-top:5px;
+}
+.logo img{
+	width:150px;
+	height:49px;
+}
+.themenu{
+	float:left;
 }

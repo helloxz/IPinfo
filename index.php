@@ -1,3 +1,6 @@
+<?php
+	$ip = $_SERVER["REMOTE_ADDR"];
+?>
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,20 +20,14 @@
 		<div class="layui-container">
 			<div class="layui-row">
 				<div class="layui-col-lg12">
-					<ul class="layui-nav" lay-filter="">
-					  <li class="layui-nav-item"><a href=""><h1>最新活动</h1></a></li>
-					  <li class="layui-nav-item layui-this"><a href="">产品</a></li>
-					  <li class="layui-nav-item"><a href="">大数据</a></li>
-					  <li class="layui-nav-item">
-					    <a href="javascript:;">解决方案</a>
-					    <dl class="layui-nav-child"> <!-- 二级菜单 -->
-					      <dd><a href="">移动模块</a></dd>
-					      <dd><a href="">后台模版</a></dd>
-					      <dd><a href="">电商平台</a></dd>
-					    </dl>
-					  </li>
-					  <li class="layui-nav-item"><a href="">社区</a></li>
-					</ul>
+					<div class="logo"><a href="./" title = "IPinfo"><img src="./static/newlogo.png" alt=""></a></div>
+					<div class = "layui-hide-xs themenu">
+						<ul class="layui-nav" lay-filter="">
+						  <li class="layui-nav-item layui-this"><a href="./">首页</a></li>
+						  <li class="layui-nav-item"><a href="">源码</a></li>
+						  <li class="layui-nav-item"><a href="">API</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -44,23 +41,59 @@
 				  <tbody>
 				    <tr>
 				      	<td width="75%">
-						   	<input id="url" type="text" required="" lay-verify="required" placeholder="请输入URL地址" autocomplete="off" class="layui-input" data-cip-id="url">
+						   	<input id="ip" type="text" required="" lay-verify="required" placeholder="请输入URL地址" autocomplete="off" class="layui-input" data-cip-id="url">
 					    </td>
 					    <td width="15%">
-						    
-					      <select name="city" lay-verify="required" id="ua">
-					        <option value="default"></option>
+					      <select name="" lay-verify="required" id="type">
+					        <option value="default">查询接口</option>
 					        <option value="ipip">IPIP.NET</option>
 					        <option value="taobao">淘宝</option>
 					        <option value="sina">新浪</option>
 					        <option value="geoip">GeoIP</option>
 					      </select>
-						    
 					    </td>
 				      	<td width="10%"><button type="submit" class="layui-btn layui-btn" id="btn">查 询</button></td>
 				    </tr>
 				  </tbody>
 				</table>
+				<div id="myip">
+					<h3>您当前IP:<code id = "getip"><?php echo $ip; ?></code></h3>
+				</div>
+				<!--返回IP查询结果-->
+				<div id = "ipinfo">
+					<h1 style = "text-align:center;">来自 <span id = "api"></span> 的数据</h1>
+					<table class="layui-table">
+					  <colgroup>
+					    <col width="150">
+					    <col width="150">
+						<col width="150">   
+					    <col width="150">
+						<col width="150">
+						<col>
+					  </colgroup>
+					  <thead>
+					    <tr>
+					      <th>IP</th>
+					      <th>国家</th>
+					      <th>省</th>
+					      <th>市</th>
+					      <th>区/县</th>
+					      <th>运营商</th>
+					    </tr> 
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td id = "reip"></td>
+					      <td id = "country"></td>
+					      <td id = "region"></td>
+					      <td id = "city"></td>
+					      <td id = "county"></td>
+					      <td id = "isp"></td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+				<!--返回IP查询结果END-->
 			</div>
 		</div>
 	</div>
@@ -76,14 +109,8 @@
 		</div>
 	</div>
 	<!--底部END-->
+	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script>
-	layui.use('form', function(){
-	  var form = layui.form;
-	  
-	  //各种基于事件的操作，下面会有进一步介绍
-	});
-	</script>
-
+	<script src = "./static/embed.js"></script>
 </body>
 </html>
