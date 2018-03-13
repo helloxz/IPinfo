@@ -26,6 +26,10 @@
 }
 #myip{
 	text-align:center;
+	margin-top:80px;
+}
+#myip h3{
+	margin-top:10px;
 }
 #myip code{
 	background-color:#F0F0F0;

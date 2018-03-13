@@ -41,6 +41,7 @@
 	    	case 'taobao':
 	    		$ipinfo = json_decode($reinfo);
 	    		$ipinfo = $ipinfo->data;
+	    		$ipinfo->county = str_replace("X","",$ipinfo->county);
 	    		$ipinfo = array(
 	    			"ip" => $ip,
 	    			"country" => $ipinfo->country,

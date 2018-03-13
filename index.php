@@ -31,7 +31,7 @@
 					</div>
 					<div class="right layui-hide-xs">
 						<ul class="layui-nav" lay-filter="">
-							<li class="layui-nav-item"><a href="javasc:;" onclick = "mobile();"><i class="layui-icon">&#xe63b;</i> 手机访问</a></li>
+							<li class="layui-nav-item"><a href="javascript:;" onclick = "mobile();"><i class="layui-icon">&#xe63b;</i> 手机访问</a></li>
 						</ul>
 					</div>
 				</div>
@@ -109,7 +109,7 @@
 		<div class="layui-container">
 			<div class="layui-row">
 				<div class="layui-col-lg12">
-					Copyright &copy; 2018 Powered by <a href="https://www.xiaoz.me/" target = "_blank">xiaoz.me</a>
+					Copyright &copy; 2018 Powered by <a href="https://ip.awk.sh/" target = "_blank">IPinfo.</a> | Author <a href = "https://www.xiaoz.me/" target = "_blank">xiaoz.me</a>
 				</div>
 			</div>
 		</div>
