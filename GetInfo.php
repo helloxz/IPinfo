@@ -1,6 +1,6 @@
 <?php
 	error_reporting(E_ALL^E_NOTICE^E_WARNING^E_DEPRECATED);
-	$apiurl = array("ipip" => "http://freeapi.ipip.net/","taobao" => "http://ip.taobao.com/service/getIpInfo.php?ip=","sina" => "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=","geoip" => "https://api.ip.sb/geoip/");
+	$apiurl = array("default" => "http://freeapi.ipip.net/","ipip" => "http://freeapi.ipip.net/","taobao" => "http://ip.taobao.com/service/getIpInfo.php?ip=","sina" => "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=","geoip" => "https://api.ip.sb/geoip/");
 	$type = $_GET['type'];
 	$ip = $_GET['ip'];
 	$fullurl = $apiurl[$type].$ip;
@@ -22,6 +22,14 @@
 	    //echo $reinfo;
 	    switch ( $type )
 	    {	
+	    	//返回默认数据
+	    	case 'default':
+	    		$ipinfo = json_decode($reinfo);
+	    		$ipinfo = array("ip" => $ip,"country" => $ipinfo[0],"region" => $ipinfo[1],"city" => $ipinfo[2],"county" => $ipinfo[3],"isp" => $ipinfo[4]);
+	    		$ipinfo = json_encode($ipinfo);
+	    		echo $ipinfo;
+	    		break;	
+	    	//返回淘宝数据
 	    	//返回ipip.net数据
 	    	case 'ipip':
 	    		$ipinfo = json_decode($reinfo);

@@ -9,17 +9,27 @@
 	color:#DFDFDF;
 	width:100%;
 }
+.footer a{
+	color:#DFDFDF;
+}
 .content{
-	margin-top:20px;
+	margin-top:40px;
+	
 }
 #ipinfo{
 	display: none;
+	box-shadow: 1px 1px 1px 1px #888888;
+	margin-top:40px;
 }
 #allinfo{
 	display: none;
 }
 #myip{
 	text-align:center;
+}
+#myip code{
+	background-color:#F0F0F0;
+	color:#C13;
 }
 .logo{
 	float:left;
@@ -31,4 +41,7 @@
 }
 .themenu{
 	float:left;
+}
+.right{
+	float:right;
 }
