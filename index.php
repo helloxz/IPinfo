@@ -48,7 +48,7 @@
 				  <tbody>
 				    <tr>
 				      	<td width="75%">
-						   	<input id="ip" type="text" required="" lay-verify="required" placeholder="请输入 IP 地址" autocomplete="off" class="layui-input" data-cip-id="url">
+						   	<input id="ip" type="text" required="" lay-verify="required" placeholder="请输入 IP 或 域名" autocomplete="off" class="layui-input" data-cip-id="url">
 					    </td>
 					    <td width="15%">
 					      <select name="" lay-verify="required" id="type">
@@ -64,7 +64,8 @@
 				  </tbody>
 				</table>
 				<div id="myip">
-					<h3>您当前IP:<code id = "getip"><?php echo $ip; ?></code></h3>
+					<h3>内网IP:<code id = "localip"></code></h3>
+					<h3>公网IP:<code id = "getip"><?php echo $ip; ?></code></h3>
 				</div>
 				<!--返回IP查询结果-->
 				<div id = "ipinfo">
@@ -118,6 +119,6 @@
 	<!--底部END-->
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js"></script>
+	<script src = "./static/embed.js?up=1.1"></script>
 </body>
 </html>
