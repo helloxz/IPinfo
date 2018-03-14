@@ -5,7 +5,7 @@
 <html lang="zh-cmn-Hans" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<title>IP地址查询 - IPInfo</title>
+	<title>聚合多接口的IP地址查询工具 - IPInfo</title>
 	<meta name="generator" content="EverEdit" />
 	<meta name="author" content="xiaoz.me" />
 	<meta name="keywords" content="geoip,ip查询网,本地ip查询,本机ip查询,ip查询" />
@@ -21,12 +21,13 @@
 		<div class="layui-container">
 			<div class="layui-row">
 				<div class="layui-col-lg12">
-					<div class="logo"><a href="./" title = "IPinfo"><img src="./static/newlogo.png" alt=""></a></div>
+					<div class="logo"><a href="./" title = "聚合多接口的IP地址查询工具"><img src="./static/newlogo.png" alt=""></a></div>
 					<div class = "layui-hide-xs themenu">
 						<ul class="layui-nav" lay-filter="">
 						  <li class="layui-nav-item layui-this"><a href="./"><i class="layui-icon">&#xe68e;</i> 首页</a></li>
 						  <li class="layui-nav-item"><a href="https://github.com/helloxz/IPinfo" rel = "nofollow" target = "_blank"><i class="layui-icon">&#xe64e;</i> 源码</a></li>
-						  <li class="layui-nav-item"><a href=""><i class="layui-icon">&#xe857;</i> API</a></li>
+						  <li class="layui-nav-item"><a href="javascript:;" onclick = "api();"><i class="layui-icon">&#xe857;</i> API</a></li>
+						  <li class="layui-nav-item"><a href="javascript:;" onclick = "about();"><i class="layui-icon">&#xe60b;</i> 关于</a></li>
 						</ul>
 					</div>
 					<div class="right layui-hide-xs">

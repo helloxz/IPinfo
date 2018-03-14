@@ -1,8 +1,15 @@
 <?php
 	error_reporting(E_ALL^E_NOTICE^E_WARNING^E_DEPRECATED);
+	//接口地址
 	$apiurl = array("default" => "http://freeapi.ipip.net/","ipip" => "http://freeapi.ipip.net/","taobao" => "http://ip.taobao.com/service/getIpInfo.php?ip=","sina" => "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=","geoip" => "https://api.ip.sb/geoip/");
-	$type = $_GET['type'];
-	$ip = $_GET['ip'];
+	$type = $_GET['type'];		//获取接口类型
+	$ip = $_GET['ip'];			//获取IP
+	//对IP进行判断
+	$isip = filter_var($ip, FILTER_VALIDATE_IP);
+	if((!isset($ip)) || !$isip) {
+		echo 'IP格式有误';
+		exit;
+	}
 	$fullurl = $apiurl[$type].$ip;
 
 	queryip($ip,$type,$fullurl);

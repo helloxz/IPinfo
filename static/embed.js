@@ -14,6 +14,7 @@ $(document).ready(function(){
 	});
 	$("#btn").click(function(){
 		var ip = $("#ip").val();
+		ip = ip.replace(/ /g,"");	//替换空字符
 		var type = $("#type").val();
 		//判断IP是否为真
 		var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
@@ -71,4 +72,18 @@ function mobile(){
 	  title: '请用手机扫描访问'
 	  ,content: qrimg
 	});   
+}
+function api(){
+	layer.open({
+	  title: '温馨提示：'
+	  ,content: 'API正在开发中...敬请期待。'
+	});  
+}
+function about(){
+	layer.open({
+	  	type: 2, 
+	  	title:'关于',
+	  	area: ['800px', '600px'],
+	  	content: './static/about.html' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+	}); 
 }
