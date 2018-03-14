@@ -1,5 +1,6 @@
 <?php
 	$ip = $_SERVER["REMOTE_ADDR"];
+	$ua = $_SERVER['HTTP_USER_AGENT'];
 ?>
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans" xmlns="http://www.w3.org/1999/xhtml">
@@ -13,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 	<link rel="stylesheet" href="./layui/css/layui.css">
-	<link rel="stylesheet" href="./static/style.css?v=1.0">
+	<link rel="stylesheet" href="./static/style.css?v=1.1">
 </head>
 <body>
 	<!--导航菜单-->
@@ -66,8 +67,37 @@
 				</table> 
 				<div id = "loading"><center><img src="./static/loading_new.gif" alt="" width = "200" height = "200"></center></div>
 				<div id="myip">
-					<h3>内网IP:<code id = "localip"></code></h3>
-					<h3>公网IP:<code id = "getip"><?php echo $ip; ?></code></h3>
+					<table class="layui-table">
+					  <colgroup>
+					    <col width="150">
+						<col>
+					  </colgroup>
+					  <thead>
+					    <tr>
+					      	<th colspan = '2'><center><h2>您的信息如下</h2></center></th>
+					    </tr> 
+					  </thead>
+					  <tbody>
+					    <tr>
+					      	<td>内网IP</td>
+					      	<td><code id = "localip"></code></td>
+					    </tr>
+					    <tr>
+					      	<td>公网IP</td>
+					      	<td><code id = "getip"><?php echo $ip; ?></code></td>
+					    </tr>
+					    <tr>
+					      	<td>地区/运营商</td>
+					      	<td id = "mylocation"></td>
+					    </tr>
+					    <tr>
+					      	<td>User Agent</td>
+					      	<td><?php echo $ua; ?></td>
+					    </tr>
+					  </tbody>
+					</table>
+					<!--<h3>内网IP:<code id = "localip"></code></h3>
+					<h3>公网IP:<code id = "getip"><?php echo $ip; ?></code></h3>-->
 				</div>
 				<!--返回IP查询结果-->
 				<div id = "ipinfo">
@@ -87,7 +117,7 @@
 					      <th>国家</th>
 					      <th>省</th>
 					      <th>市</th>
-					      <th>区/县</th>
+					      <th class = "layui-hide-xs">区/县</th>
 					      <th>运营商</th>
 					    </tr> 
 					  </thead>
@@ -97,7 +127,7 @@
 					      <td id = "country"></td>
 					      <td id = "region"></td>
 					      <td id = "city"></td>
-					      <td id = "county"></td>
+					      <td id = "county" class = "layui-hide-xs"></td>
 					      <td id = "isp"></td>
 					    </tr>
 					  </tbody>
@@ -144,7 +174,7 @@
 	</div>
 	<!--内容部分END-->
 	<!--底部-->
-	<div class="footer">
+	<div class="footer layui-hide-xs">
 		<div class="layui-container">
 			<div class="layui-row">
 				<div class="layui-col-lg12">
@@ -156,6 +186,6 @@
 	<!--底部END-->
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js?v=1.3"></script>
+	<script src = "./static/embed.js?v=1.4"></script>
 </body>
 </html>

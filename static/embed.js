@@ -9,7 +9,8 @@ $(document).ready(function(){
 	$.get("./GetInfo.php?type=taobao"+"&ip="+getip,function(data,status){
 		if(status == 'success') {
 			var myip = eval('(' + data + ')');
-			$("#myip").append("<h3><i class='layui-icon'>&#xe715;</i> " + myip.country + myip.region + myip.city + myip.county + myip.isp + "</h3>");
+			//$("#myip").append("<h3><i class='layui-icon'>&#xe715;</i> " + myip.country + myip.region + myip.city + myip.county + myip.isp + "</h3>");
+			$("#mylocation").text(myip.country + ' ' + myip.region + ' ' + myip.city + ' ' + myip.county + ' ' + myip.isp);
 		}
 	});
 	$("#btn").click(function(){
