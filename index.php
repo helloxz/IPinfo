@@ -119,6 +119,6 @@
 	<!--底部END-->
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js?up=1.1"></script>
+	<script src = "./static/embed.js?up=1.2"></script>
 </body>
 </html>
