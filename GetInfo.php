@@ -109,7 +109,13 @@
 		$domain = parse_url($url);
 		//主机名不存在，可能是IP
 		if(!$domain['host']) {
-			$ip = $url;
+			//如果是IP
+			if(filter_var($url, FILTER_VALIDATE_IP)) {
+				$ip = $url;
+			}//不是IP
+			else{
+				$ip = gethostbyname($url);
+			}
 		}
 		else{
 			$domain = $domain['host'];
