@@ -112,22 +112,21 @@
 			//如果是IP
 			if(filter_var($url, FILTER_VALIDATE_IP)) {
 				$ip = $url;
-			}//不是IP
+			}//如果不是IP，可能是一个域名
 			else{
 				$ip = gethostbyname($url);
 			}
-		}
+		}//是一个URL
 		else{
 			$domain = $domain['host'];
 			$ip = gethostbyname($domain);
 		}
 		//echo $domain;
-		
+		//最后返回解析后的IP
 		if(filter_var($ip, FILTER_VALIDATE_IP)) {
 			return $ip;
 		}
 		else{
-			//echo '不是一个有效的IP或域名！';
 			$ipinfo = array(
 				"status"	=>	0,
 				"msg"		=> 	"不是一个有效的IP或域名！"

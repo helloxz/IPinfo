@@ -23,6 +23,7 @@
 }
 #allinfo{
 	display: none;
+	margin-top:40px;
 }
 #myip{
 	text-align:center;
@@ -48,4 +49,7 @@
 }
 .right{
 	float:right;
+}
+#loading{
+	display: none;
 }

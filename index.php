@@ -5,7 +5,7 @@
 <html lang="zh-cmn-Hans" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<title>聚合多接口的IP地址查询工具 - IPInfo</title>
+	<title>整合多接口的IP地址查询工具 - IPInfo</title>
 	<meta name="generator" content="EverEdit" />
 	<meta name="author" content="xiaoz.me" />
 	<meta name="keywords" content="geoip,ip查询网,本地ip查询,本机ip查询,ip查询" />
@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 	<link rel="stylesheet" href="./layui/css/layui.css">
-	<link rel="stylesheet" href="./static/style.css">
+	<link rel="stylesheet" href="./static/style.css?v=1.0">
 </head>
 <body>
 	<!--导航菜单-->
@@ -57,12 +57,14 @@
 					        <option value="taobao">淘宝</option>
 					        <option value="sina">新浪</option>
 					        <option value="geoip">GeoIP</option>
+					        <option value="all">全部</option>
 					      </select>
 					    </td>
 				      	<td width="10%"><button type="submit" class="layui-btn layui-btn" id="btn">查 询</button></td>
 				    </tr>
 				  </tbody>
-				</table>
+				</table> 
+				<div id = "loading"><center><img src="./static/loading_new.gif" alt="" width = "200" height = "200"></center></div>
 				<div id="myip">
 					<h3>内网IP:<code id = "localip"></code></h3>
 					<h3>公网IP:<code id = "getip"><?php echo $ip; ?></code></h3>
@@ -102,6 +104,41 @@
 					</table>
 				</div>
 				<!--返回IP查询结果END-->
+				<!--返回全部查询结果-->
+				<div id = "allinfo">
+					<h1 style = "text-align:center;"> <code id = "allip"></code> 查询结果</h1>
+					<table class="layui-table">
+					  <colgroup>
+					    <col width="150">
+						<col>
+					  </colgroup>
+					  <thead>
+					    <tr>
+					      <th>数据来源</th>
+					      <th>地区/运营商</th>
+					    </tr> 
+					  </thead>
+					  <tbody>
+					    <tr>
+					      	<td>IPIP.NET</td>
+					      	<td id = "ipip"></td>
+					    </tr>
+					    <tr>
+					      	<td>淘宝</td>
+					      	<td id = "taobao"></td>
+					    </tr>
+					    <tr>
+					      	<td>新浪</td>
+					      	<td id = "sina"></td>
+					    </tr>
+					    <tr>
+					      	<td>GeoIP</td>
+					      	<td id = "geoip"></td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+				<!--返回全部查询结果END-->
 			</div>
 		</div>
 	</div>
@@ -119,6 +156,6 @@
 	<!--底部END-->
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js?up=1.2"></script>
+	<script src = "./static/embed.js?v=1.3"></script>
 </body>
 </html>

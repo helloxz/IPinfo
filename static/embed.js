@@ -13,6 +13,11 @@ $(document).ready(function(){
 		}
 	});
 	$("#btn").click(function(){
+		$("#myip").hide();
+		$("#ipinfo").hide();
+		$("#allinfo").hide();
+		$("#loading").show();
+		
 		var ip = $("#ip").val();
 		ip = ip.replace(/ /g,"");	//替换空字符
 		var type = $("#type").val();
@@ -45,30 +50,59 @@ $(document).ready(function(){
 				break;
 		}
 		//获取数据
-		$.get("./GetInfo.php?type="+type+"&ip="+ip,function(data,status){
-			if(status == 'success') {
+		if(type == 'all') {
+			$.get("./AllInfo.php?ip="+ip,function(data,status){
 				var ipinfo = eval('(' + data + ')');
-				//如果IP查询成功
-				if(ipinfo.status == 1) {
-					$("#reip").text(ipinfo.ip);
-					$("#country").text(ipinfo.country);
-					$("#region").text(ipinfo.region);
-					$("#city").text(ipinfo.city);
-					$("#isp").text(ipinfo.isp);
-					$("#county").text(ipinfo.county);
-					$("#myip").hide();
-					$("#ipinfo").show();
+				if(status == 'success') {
+					$("#allip").text(ipinfo.ip);
+					if(ipinfo.status == 1) {
+						//$("#myip").hide();
+						//$("#ipinfo").hide();
+						$("#ipip").text(ipinfo.ipip);
+						$("#taobao").text(ipinfo.taobao);
+						$("#sina").text(ipinfo.sina);
+						$("#geoip").text(ipinfo.geoip);
+						$("#allinfo").show();
+						$("#loading").hide();
+					}
+					else if(ipinfo.status == 0){
+						layer.open({
+						  title: '错误提示'
+						  ,content: ipinfo.msg,
+						}); 
+						$("#loading").hide();  
+					}
 				}
-				//IP查询失败
-				else if(ipinfo.status == 0) {
-					layer.open({
-					  title: '错误提示'
-					  ,content: ipinfo.msg,
-					  time:2000
-					});   
+			})
+		}
+		else{
+			$.get("./GetInfo.php?type="+type+"&ip="+ip,function(data,status){
+				if(status == 'success') {
+					var ipinfo = eval('(' + data + ')');
+					//如果IP查询成功
+					if(ipinfo.status == 1) {
+						$("#reip").text(ipinfo.ip);
+						$("#country").text(ipinfo.country);
+						$("#region").text(ipinfo.region);
+						$("#city").text(ipinfo.city);
+						$("#isp").text(ipinfo.isp);
+						$("#county").text(ipinfo.county);
+						//$("#myip").hide();
+						//$("#allinfo").hide();
+						$("#ipinfo").show();
+						$("#loading").hide();
+					}
+					//IP查询失败
+					else if(ipinfo.status == 0) {
+						layer.open({
+						  title: '错误提示'
+						  ,content: ipinfo.msg,
+						});   
+						$("#loading").hide();
+					}
 				}
-			}
-		});
+			});
+		}
 	});
 });
 function mobile(){
