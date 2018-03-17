@@ -50,7 +50,7 @@ $(document).ready(function(){
 				$("#api").text("GeoIP");
 				break;
 		}
-		//获取数据
+		//获取所有数据
 		if(type == 'all') {
 			$.get("./AllInfo.php?ip="+ip,function(data,status){
 				var ipinfo = eval('(' + data + ')');
@@ -63,6 +63,7 @@ $(document).ready(function(){
 						$("#taobao").text(ipinfo.taobao);
 						$("#sina").text(ipinfo.sina);
 						$("#geoip").text(ipinfo.geoip);
+						$("#qqwry").text(ipinfo.qqwry);
 						$("#allinfo").show();
 						$("#loading").hide();
 					}

@@ -1,5 +1,7 @@
 <?php
 	error_reporting(E_ALL^E_NOTICE^E_WARNING^E_DEPRECATED);
+	//载入纯真查询接口
+	include_once( 'qqwry.php' );
 	//接口地址
 	$apiurl = array("ipip" => "http://freeapi.ipip.net/","taobao" => "http://ip.taobao.com/service/getIpInfo.php?ip=","sina" => "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=","geoip" => "https://api.ip.sb/geoip/");
 	
@@ -30,6 +32,7 @@
 	$taobao = taobao($reinfo['taobao']);
 	$sina = sina($reinfo['sina']);
 	$geoip =  geoip($reinfo['geoip']);
+	$qqwry = qqwry($ip);
 
 	$alldata = array(
 		"status"	=>	1,
@@ -37,7 +40,8 @@
 		"ipip"		=>	$ipip,
 		"taobao"	=>	$taobao,
 		"sina"		=>	$sina,
-		"geoip"		=>	$geoip
+		"geoip"		=>	$geoip,
+		"qqwry"		=> 	$qqwry
 	);
 	$alldata = json_encode($alldata);
 	echo $alldata;
@@ -100,5 +104,14 @@
 		$geoip = json_decode($apijson);
 		$geoip = $geoip->country." ".$geoip->region." ".$geoip->city." ".$geoip->organization;
 		return $geoip;
+	}
+	//获取纯真数据
+	function qqwry($ip) {
+		$qqwry = new ip();
+		$ip_address = $_GET['ip'];
+		$addr = $qqwry -> ip2addr("$ip_address");
+		$addr = array_slice($addr,2,4);
+		$addr = implode(" ",$addr);
+		return $addr;
 	}
 ?>

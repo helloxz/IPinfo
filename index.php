@@ -15,6 +15,7 @@
 	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./static/style.css?v=1.1">
+	<script src = "./static/tongji.js"></script>
 </head>
 <body>
 	<!--导航菜单-->
@@ -165,6 +166,10 @@
 					      	<td>GeoIP</td>
 					      	<td id = "geoip"></td>
 					    </tr>
+					     <tr>
+					      	<td>纯真IP</td>
+					      	<td id = "qqwry"></td>
+					    </tr>
 					  </tbody>
 					</table>
 				</div>
@@ -186,6 +191,6 @@
 	<!--底部END-->
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js?v=1.4"></script>
+	<script src = "./static/embed.js?v=1.5"></script>
 </body>
 </html>
