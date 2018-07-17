@@ -1,7 +1,10 @@
 <?php
+	header('Access-Control-Allow-Origin:*');
 	error_reporting(E_ALL^E_NOTICE^E_WARNING^E_DEPRECATED);
+	include_once('./config.php');
 	//载入纯真IP
-	include_once( 'qqwry.php' );
+	include_once( 'class/qqwry.php' );
+	include_once("class/Query.Class.php");
 
 	$ip = $_GET['ip'];		//获取IP
 	$type = $_GET['type'];	//获取数据类型
@@ -22,10 +25,19 @@
 		exit;
 	}
 	//查询IP
-	$qqwry = new ip();
-	$addr = $qqwry -> ip2addr("$ip");
-	$addr = array_slice($addr,2,4);
-	$addr = implode(" ",$addr);
+	//$qqwry = new ip();
+	$addr = $query->caches($ip,'qqwry');
+	$addr = json_decode($addr);
+	$addr = $addr->address;
+
+	if($addr == null){
+		$addr = $query->caches($ip,'qqwry');
+		$addr = json_decode($addr);
+		$addr = $addr->address;
+	}
+	//$addr = $qqwry -> ip2addr("$ip");
+	//$addr = array_slice($addr,2,4);
+	//$addr = implode(" ",$addr);
 
 	//返回不同的数据
 	switch ( $data )
@@ -57,7 +69,7 @@
 			echo json_encode($info);
 			exit;	
 		default:
-			echo $ip." ".$addr;
+			echo $ip." ".$addr."\n";
 			break;
 	}
 ?>

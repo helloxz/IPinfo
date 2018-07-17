@@ -3,6 +3,14 @@ layui.use(['layer', 'form'], function(){
   	var layer = layui.layer;
   //各种基于事件的操作，下面会有进一步介绍
 });
+
+//回车键查询ip
+$(document).keyup(function(){
+	if (event.keyCode == "13") {//keyCode=13是回车键
+	    queryip();
+	}
+});
+
 $(document).ready(function(){
 	//访问页面时加载
 	var getip = $("#getip").text();
@@ -112,7 +120,7 @@ function mobile(){
 	var host = window.location.host;
 	var pathname = window.location.pathname;
 	var url = protocol + '//' + host + pathname;
-	var qrcode = "https://pan.baidu.com/share/qrcode?w=200&h=200&url=" + url;
+	var qrcode = "https://sapi.k780.com/?app=qr.get&level=L&size=5&data=" + url;
 	var qrimg = "<center><img src = '" + qrcode + "' /></center>";
 	layer.open({
 		type: 1,
@@ -202,3 +210,50 @@ getIPs(function(ip){
     if (ip.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/))
         $("#localip").append(ip);
 });
+
+
+//查询ip
+function queryip(){
+	//显示加载
+	getip = $("#ip").val();
+	getip = getip.replace(/ /g,"");	//替换空字符
+	url = "./query.php?ip=" + getip;
+
+	//如果IP是为空
+	if(getip == ''){
+		layer.msg('IP不能为空！');
+		$("#ip").focus();
+		return false;
+	}
+	
+	else{
+		var index = layer.load();
+		$("#allip").hide();
+		$("#allip").empty();
+		
+		$.get(url,function(data,status){
+			if(status == 'success'){
+				$("#allip").append(data);
+				
+				$("#myip").hide();
+				
+				$("#allip").show();
+				layer.close(index);
+			}
+		});
+	}
+}
+
+//删除缓存
+function dcache(ip,source){
+	$.get("./dcache.php?ip=" + ip + "&source=" + source,function(data,status){
+		var obj = eval('(' + data + ')');
+
+		if(obj.code == 1){
+			layer.msg(obj.msg);
+		}
+		else{
+			layer.msg(obj.msg);
+		}
+	});
+}

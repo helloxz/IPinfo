@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 	<link rel="stylesheet" href="./layui/css/layui.css">
-	<link rel="stylesheet" href="./static/style.css?v=1.1">
+	<link rel="stylesheet" href="./static/style.css?v=1.2">
 	<script src = "./static/tongji.js"></script>
 </head>
 <body>
@@ -27,6 +27,7 @@
 					<div class = "layui-hide-xs themenu">
 						<ul class="layui-nav" lay-filter="">
 						  <li class="layui-nav-item layui-this"><a href="./"><i class="layui-icon">&#xe68e;</i> 首页</a></li>
+						  <li class="layui-nav-item"><a href="./dcache.php" target = "_blank"><i class="layui-icon">&#xe640;</i> 清缓存</a></li>
 						  <li class="layui-nav-item"><a href="https://github.com/helloxz/IPinfo" rel = "nofollow" target = "_blank"><i class="layui-icon">&#xe64e;</i> 源码</a></li>
 						  <li class="layui-nav-item"><a href="https://doc.xiaoz.me/docs/api/ipinfo" rel = "nofollow" target = "_blank"><i class="layui-icon">&#xe857;</i> API</a></li>
 						  <li class="layui-nav-item"><a href="javascript:;" onclick = "about();"><i class="layui-icon">&#xe60b;</i> 关于</a></li>
@@ -48,26 +49,18 @@
 			<div class="layui-col-lg10 layui-col-md-offset1">
 				<table class="layui-table layui-form" lay-even="" lay-skin="nob">
 				  <tbody>
+				  	<thead>
 				    <tr>
-				      	<td width="75%">
-						   	<input id="ip" type="text" required="" lay-verify="required" placeholder="请输入 IP 或 域名" autocomplete="off" class="layui-input" data-cip-id="url">
-					    </td>
-					    <td width="15%">
-					      <select name="" lay-verify="required" id="type">
-					        <option value="default">查询接口</option>
-					        <option value="ipip">IPIP.NET</option>
-					        <option value="taobao">淘宝</option>
-					        <option value="sina">新浪</option>
-					        <option value="geoip">GeoIP</option>
-					        <option value="all">全部</option>
-					      </select>
-					    </td>
-				      	<td width="10%"><button type="submit" class="layui-btn layui-btn" id="btn">查 询</button></td>
+				      	<th width="90%">
+						   	<input id="ip" type="text" required="" lay-verify="required" placeholder="请输入 IP 或 URL" autocomplete="off" class="layui-input" data-cip-id="url">
+					    </th>
+				      	<th width="10%"><button type="submit" class="layui-btn layui-btn" onclick = "queryip()"><i class="layui-icon">&#xe615;</i> 查 询</button></th>
 				    </tr>
+				    </thead>
 				  </tbody>
 				</table> 
-				<div id = "loading"><center><img src="./static/loading_new.gif" alt="" width = "200" height = "200"></center></div>
-				<div id="myip">
+				
+				<div id="myip" style = "margin-top:4em;">
 					<table class="layui-table">
 					  <colgroup>
 					    <col width="150">
@@ -100,80 +93,8 @@
 					<!--<h3>内网IP:<code id = "localip"></code></h3>
 					<h3>公网IP:<code id = "getip"><?php echo $ip; ?></code></h3>-->
 				</div>
-				<!--返回IP查询结果-->
-				<div id = "ipinfo">
-					<h1 style = "text-align:center;">来自 <span id = "api"></span> 的数据</h1>
-					<table class="layui-table">
-					  <colgroup>
-					    <col width="150">
-					    <col width="150">
-						<col width="150">   
-					    <col width="150">
-						<col width="150">
-						<col>
-					  </colgroup>
-					  <thead>
-					    <tr>
-					      <th>IP</th>
-					      <th>国家</th>
-					      <th>省</th>
-					      <th>市</th>
-					      <th class = "layui-hide-xs">区/县</th>
-					      <th>运营商</th>
-					    </tr> 
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <td id = "reip"></td>
-					      <td id = "country"></td>
-					      <td id = "region"></td>
-					      <td id = "city"></td>
-					      <td id = "county" class = "layui-hide-xs"></td>
-					      <td id = "isp"></td>
-					    </tr>
-					  </tbody>
-					</table>
-				</div>
-				<!--返回IP查询结果END-->
-				<!--返回全部查询结果-->
-				<div id = "allinfo">
-					<h1 style = "text-align:center;"> <code id = "allip"></code> 查询结果</h1>
-					<table class="layui-table">
-					  <colgroup>
-					    <col width="150">
-						<col>
-					  </colgroup>
-					  <thead>
-					    <tr>
-					      <th>数据来源</th>
-					      <th>地区/运营商</th>
-					    </tr> 
-					  </thead>
-					  <tbody>
-					    <tr>
-					      	<td>IPIP.NET</td>
-					      	<td id = "ipip"></td>
-					    </tr>
-					    <tr>
-					      	<td>淘宝</td>
-					      	<td id = "taobao"></td>
-					    </tr>
-					    <tr>
-					      	<td>新浪</td>
-					      	<td id = "sina"></td>
-					    </tr>
-					    <tr>
-					      	<td>GeoIP</td>
-					      	<td id = "geoip"></td>
-					    </tr>
-					     <tr>
-					      	<td>纯真IP</td>
-					      	<td id = "qqwry"></td>
-					    </tr>
-					  </tbody>
-					</table>
-				</div>
-				<!--返回全部查询结果END-->
+				
+				<div id="allip" style = "margin-top:4em;"></div>
 			</div>
 		</div>
 	</div>
@@ -191,6 +112,6 @@
 	<!--底部END-->
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js?v=1.5"></script>
+	<script src = "./static/embed.js?v=1.6"></script>
 </body>
 </html>
