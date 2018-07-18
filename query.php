@@ -52,6 +52,17 @@
 	}
 	$pure = json_decode($pure);
 
+	//腾讯数据
+	//判断是否启用了腾讯数据
+	
+	if(LBSQQ != ''){
+		$lbsqq = $query->caches($ip,'lbsqq');
+		if($lbsqq == null){
+			$lbsqq = $query->caches($ip,'lbsqq');
+		}
+		$lbsqq = json_decode($lbsqq);
+		$style = 'block';
+	}
 	//返回所有接口数据
 ?>
 
@@ -104,6 +115,16 @@
 			  	&nbsp;&nbsp; <a href="javascript:;" class = "layui-btn layui-btn-xs layui-btn-danger" onclick = "dcache('<?php echo $pure->ip; ?>','<?php echo $pure->source ?>')">清除缓存</a>
 		  	</td>
 		</tr>
+		<?php if(LBSQQ != ''){ ?>
+		<tr>
+		  	<td>腾讯 <a href="javascript:;" onclick = "qqmsg();"><i class="layui-icon">&#xe607;</i></a> </td>
+		  	<td><?php echo $lbsqq->address; ?></td>
+		  	<td>
+			  	<?php echo $lbsqq->date; ?>
+			  	&nbsp;&nbsp; <a href="javascript:;" class = "layui-btn layui-btn-xs layui-btn-danger" onclick = "dcache('<?php echo $lbsqq->ip; ?>','<?php echo $lbsqq->source ?>')">清除缓存</a>
+		  	</td>
+		</tr>
+		<?php } ?>
 	  </tbody>
 	</table>
 </div>

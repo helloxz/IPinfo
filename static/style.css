@@ -27,14 +27,15 @@ body{
 }
 /*#ipinfo{
 	display: none;
-	/*box-shadow: 1px 1px 1px 1px #888888;*/
+	/*box-shadow: 1px 1px 1px 1px #888888;
 	margin-top:40px;
 }*/
 
-/*#allinfo{
-	display: none;
-	margin-top:40px;
-}*/
+#allinfo{
+	/*display: none;
+	margin-top:40px;*/
+	margin-bottom:6em;
+}
 
 #myip{
 	/*text-align:center;*/

@@ -65,6 +65,9 @@
 					case 'qqwry':
 						return $this->qqwry($ip);
 						break;
+					case 'lbsqq':
+						return $this->lbsqq($ip);
+						break;
 					default:
 						return $this->qqwry($ip);
 						break;
@@ -185,6 +188,22 @@
 			$address = $addr;
 			//写入并返回数据
 			$re = $this->writed($ip,$address,'qqwry');
+			return $re;
+		}
+		//缓存腾讯数据
+		function lbsqq($ip){
+			//验证IP
+			$this->checkip($ip);
+			$apiurl = "https://apis.map.qq.com/ws/location/v1/ip?key=".LBSQQ."&ip=".$ip;
+			$info = $this->curl($apiurl);
+
+			$lbsqq = json_decode($info);
+
+			$address = $lbsqq->result->ad_info;
+			$address = $address->nation.' '.$address->province.' '.$address->city.' '.$address->district;
+			
+			//写入并返回数据
+			$re = $this->writed($ip,$address,'lbsqq');
 			return $re;
 		}
 		//清除缓存

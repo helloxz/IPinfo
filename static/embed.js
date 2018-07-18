@@ -257,3 +257,14 @@ function dcache(ip,source){
 		}
 	});
 }
+
+//腾讯提示
+function qqmsg(){
+	layer.msg('腾讯接口仅能查询真人IP，机房IP将返回空！', {
+	  icon: 0,
+	  time: 6000 //2秒关闭（如果不配置，默认是3秒）
+	}, function(){
+	  //do something
+	});  
+	
+}
