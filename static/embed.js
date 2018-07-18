@@ -246,7 +246,7 @@ function queryip(){
 
 //删除缓存
 function dcache(ip,source){
-	$.get("./dcache.php?ip=" + ip + "&source=" + source,function(data,status){
+	$.get("./control/dcache.php?ip=" + ip + "&source=" + source,function(data,status){
 		var obj = eval('(' + data + ')');
 
 		if(obj.code == 1){
