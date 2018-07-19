@@ -1,5 +1,7 @@
 <?php
-	$ip = $_SERVER["REMOTE_ADDR"];
+	include_once("config.php");
+	include_once("class/Operate.class.php");
+	$ip = $handle->getip();
 	$ua = $_SERVER['HTTP_USER_AGENT'];
 ?>
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 	<link rel="stylesheet" href="./layui/css/layui.css">
-	<link rel="stylesheet" href="./static/style.css?v=1.2">
+	<link rel="stylesheet" href="./static/style.css?v=1.3">
 	<script src = "./static/tongji.js"></script>
 </head>
 <body>
@@ -112,6 +114,6 @@
 	<!--底部END-->
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js?v=1.7"></script>
+	<script src = "./static/embed.js?v=1.8"></script>
 </body>
 </html>
