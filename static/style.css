@@ -1,8 +1,5 @@
 body{
-	background-image:url('./index2.jpg');
-	background-repeat:no-repeat;
-	background-attachment:fixed;
-	background-position:0px -500px;
+	background-image:url('./bg.png');
 }
 .menu{
 	background-color:#393D49;
@@ -23,7 +20,7 @@ body{
 	margin-top:100px;
 }
 #allip{
-	color:#FFFFFF;
+	color:#393D49;
 }
 /*#ipinfo{
 	display: none;
