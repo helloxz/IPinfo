@@ -31,7 +31,7 @@
 						  <li class="layui-nav-item layui-this"><a href="./"><i class="layui-icon">&#xe68e;</i> 首页</a></li>
 						  <li class="layui-nav-item"><a href="./dcache.php" target = "_blank"><i class="layui-icon">&#xe640;</i> 清缓存</a></li>
 						  <li class="layui-nav-item"><a href="https://github.com/helloxz/IPinfo" rel = "nofollow" target = "_blank"><i class="layui-icon">&#xe64e;</i> 源码</a></li>
-						  <li class="layui-nav-item"><a href="https://doc.xiaoz.me/docs/api/ipinfo" rel = "nofollow" target = "_blank"><i class="layui-icon">&#xe857;</i> API</a></li>
+						  <li class="layui-nav-item"><a href="https://doc.xiaoz.me/#/api/ipinfo" rel = "nofollow" target = "_blank"><i class="layui-icon">&#xe857;</i> API</a></li>
 						  <li class="layui-nav-item"><a href="javascript:;" onclick = "about();"><i class="layui-icon">&#xe60b;</i> 关于</a></li>
 						</ul>
 					</div>
