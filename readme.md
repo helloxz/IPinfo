@@ -39,7 +39,7 @@ location ~ \.(db3|dat)$ {
 ```
 
 #### API接口
-请参考文档：[https://doc.xiaoz.me/docs/api/ipinfo](https://doc.xiaoz.me/docs/api/ipinfo)
+请参考文档：[https://doc.xiaoz.me/#/api/ipinfo](https://doc.xiaoz.me/#/api/ipinfo)
 
 ### Demo
 * [https://ip.awk.sh/](https://ip.awk.sh/)
