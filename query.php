@@ -11,16 +11,29 @@
 
 	//如果不是一个IP
 	if(!filter_var($ip, FILTER_VALIDATE_IP)){
-		//如果是正常的URL
-		if(filter_var($ip, FILTER_VALIDATE_URL)){
-			$domain = parse_url($ip);
-			$host = $domain['host'];
-			@$ip = gethostbyname($host);
-		}
-		else{
+		//正则获取主机名
+		$content = strtolower($ip);
+		$content = trim($content);
+		$pattern = '/[0-9a-z]+[0-9a-z-\.]+\.[a-z]{2,6}/';
+		preg_match($pattern,$content,$arr);
+		$host = $arr[0];
+		
+		@$ip = gethostbyname($host);
+		//如果没有解析出IP
+		if((!isset($ip)) || ($ip == '') || ($host == '')){
 			echo "<h1>不是有效的IP或URL！</h1>";
 			exit;
 		}
+		//如果是正常的URL
+		//if(filter_var($ip, FILTER_VALIDATE_URL)){
+		//	$domain = parse_url($ip);
+		//	$host = $domain['host'];
+		//	@$ip = gethostbyname($host);
+		//}
+		//else{
+		//	echo "<h1>不是有效的IP或URL！</h1>";
+		//	exit;
+		//}
 		
 	}
 
