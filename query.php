@@ -14,7 +14,10 @@
 		//正则获取主机名
 		$content = strtolower($ip);
 		$content = trim($content);
-		$pattern = '/[0-9a-z]+[0-9a-z-\.]+\.[a-z]{2,6}/';
+		$content = str_replace('http://','',$content);
+		$content = str_replace('https://','',$content);
+		$content = str_replace('ftp://','',$content);
+		$pattern = '/^[0-9a-z]+[0-9a-z-\.]+\.[a-z]{2,6}/';
 		preg_match($pattern,$content,$arr);
 		$host = $arr[0];
 		
@@ -81,7 +84,17 @@
 
 <!--返回全部查询结果-->
 <div id = "allinfo">
-	<h1 style = "text-align:center;margin-bottom:40px;"> <code id = "allip"><?php echo $ipip->ip; ?></code> 查询结果</h1>
+	<h1 style = "text-align:center;margin-bottom:40px;">
+		<code id = "allip"><?php echo $ipip->ip; ?></code> 
+		<!--如果主机不为空-->
+		<?php
+			if($host != ''){
+				echo '('.$host.')';
+			}
+		?>
+		<!--主机不为空END-->
+		查询结果
+	 </h1>
 	<table class="layui-table">
 	  <colgroup>
 	    <col width="150">
