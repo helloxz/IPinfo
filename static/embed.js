@@ -14,11 +14,11 @@ $(document).keyup(function(){
 $(document).ready(function(){
 	//访问页面时加载
 	var getip = $("#getip").text();
-	$.get("./GetInfo.php?type=taobao"+"&ip="+getip,function(data,status){
+	$.get("https://api.ttt.sh/ip/qqwry/"+getip,function(data,status){
 		if(status == 'success') {
-			var myip = eval('(' + data + ')');
+			var myip = JSON.parse(data);
 			//$("#myip").append("<h3><i class='layui-icon'>&#xe715;</i> " + myip.country + myip.region + myip.city + myip.county + myip.isp + "</h3>");
-			$("#mylocation").text(myip.country + ' ' + myip.region + ' ' + myip.city + ' ' + myip.county + ' ' + myip.isp);
+			$("#mylocation").text(myip.address);
 		}
 	});
 	$("#btn").click(function(){

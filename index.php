@@ -114,6 +114,6 @@
 	<!--底部END-->
 	<script src="https://lib.sinaapp.com/js/jquery/2.2.4/jquery-2.2.4.min.js"></script>
 	<script src="./layui/layui.js"></script>
-	<script src = "./static/embed.js?v=1.8"></script>
+	<script src = "./static/embed.js?v=1.9"></script>
 </body>
 </html>

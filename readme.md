@@ -50,7 +50,9 @@ location ~ \.(db3|dat)$ {
 
 ![](https://imgurl.org/upload/1803/02f8ffeb41418ef6.png)
 
+
 ### 联系我
 * Blog:[https://www.xiaoz.me/](https://www.xiaoz.me/)
 * Q Q:337003006
 * E-mail:xiaoz93#outlook.com
+* 捐赠：[https://dwz.ovh/ipinfo](https://dwz.ovh/ipinfo)
