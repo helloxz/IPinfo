@@ -1,4 +1,5 @@
 <?php
+	header("Access-Control-Allow-Origin: *");
 	include_once("../config.php");
 	include_once("../class/qqwry.php");
 	include_once("../class/Query.Class.php");

@@ -145,7 +145,7 @@
 			//验证IP
 			$this->checkip($ip);
 			//接口地址
-			$apiurl = "http://ip.taobao.com/service/getIpInfo.php?ip=".$ip;
+			$apiurl = "https://ip.taobao.com/outGetIpInfo?accessKey=alibaba-inc&ip=".$ip;
 			$info = $this->curl($apiurl);
 			$info = json_decode($info);
 			

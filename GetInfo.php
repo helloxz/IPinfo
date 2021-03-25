@@ -1,7 +1,7 @@
 <?php
 	error_reporting(E_ALL^E_NOTICE^E_WARNING^E_DEPRECATED);
 	//接口地址
-	$apiurl = array("default" => "http://freeapi.ipip.net/","ipip" => "http://freeapi.ipip.net/","taobao" => "http://ip.taobao.com/service/getIpInfo.php?ip=","sina" => "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=","geoip" => "https://api.ip.sb/geoip/");
+	$apiurl = array("default" => "http://freeapi.ipip.net/","ipip" => "http://freeapi.ipip.net/","taobao" => "https://ip.taobao.com/outGetIpInfo?&accessKey=alibaba-inc&ip=","sina" => "http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=","geoip" => "https://api.ip.sb/geoip/");
 	$type = $_GET['type'];		//获取接口类型
 	$ip = $_GET['ip'];			//获取IP
 	$ip = geturl($ip);			//对域名进行解析并判断IP
